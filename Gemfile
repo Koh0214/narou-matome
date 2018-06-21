@@ -47,6 +47,12 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '1.3.13'
+
+  # エラー画面をわかりやすく整形してくれる
+  gem 'better_errors'
+
+  # better_errorsの画面上にirb/pry(PERL)を表示する
+  gem 'binding_of_caller'
 end
 
 group :development do
