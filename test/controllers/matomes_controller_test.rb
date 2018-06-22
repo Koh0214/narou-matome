@@ -17,7 +17,7 @@ class MatomesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create matome" do
     assert_difference('Matome.count') do
-      post matomes_url, params: { matome: { discription: @matome.discription, like: @matome.like, title: @matome.title } }
+      post matomes_url, params: { matome: { discription: @matome.discription, like: @matome.like, title: @matome.title, user_id: @matome.user_id } }
     end
 
     assert_redirected_to matome_url(Matome.last)
@@ -34,7 +34,7 @@ class MatomesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update matome" do
-    patch matome_url(@matome), params: { matome: { discription: @matome.discription, like: @matome.like, title: @matome.title } }
+    patch matome_url(@matome), params: { matome: { discription: @matome.discription, like: @matome.like, title: @matome.title, user_id: @matome.user_id } }
     assert_redirected_to matome_url(@matome)
   end
 

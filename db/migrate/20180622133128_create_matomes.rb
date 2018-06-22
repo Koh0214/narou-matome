@@ -4,6 +4,7 @@ class CreateMatomes < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :discription
       t.integer :like
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

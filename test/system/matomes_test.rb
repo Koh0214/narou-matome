@@ -17,6 +17,7 @@ class MatomesTest < ApplicationSystemTestCase
     fill_in "Discription", with: @matome.discription
     fill_in "Like", with: @matome.like
     fill_in "Title", with: @matome.title
+    fill_in "User", with: @matome.user_id
     click_on "Create Matome"
 
     assert_text "Matome was successfully created"
@@ -30,6 +31,7 @@ class MatomesTest < ApplicationSystemTestCase
     fill_in "Discription", with: @matome.discription
     fill_in "Like", with: @matome.like
     fill_in "Title", with: @matome.title
+    fill_in "User", with: @matome.user_id
     click_on "Update Matome"
 
     assert_text "Matome was successfully updated"

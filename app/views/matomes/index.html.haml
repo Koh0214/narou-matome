@@ -6,6 +6,7 @@
       %th Title
       %th Discription
       %th Like
+      %th User
       %th
       %th
       %th
@@ -16,6 +17,7 @@
         %td= matome.title
         %td= matome.discription
         %td= matome.like
+        %td= matome.user
         %td= link_to 'Show', matome
         %td= link_to 'Edit', edit_matome_path(matome)
         %td= link_to 'Destroy', matome, method: :delete, data: { confirm: 'Are you sure?' }

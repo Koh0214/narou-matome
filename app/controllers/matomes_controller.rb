@@ -15,6 +15,7 @@ class MatomesController < ApplicationController
   # GET /matomes/new
   def new
     @matome = Matome.new
+    @user = current_user
   end
 
   # GET /matomes/1/edit
@@ -69,6 +70,6 @@ class MatomesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def matome_params
-      params.require(:matome).permit(:title, :discription, :like)
+      params.require(:matome).permit(:title, :discription, :like, :user_id)
     end
 end
