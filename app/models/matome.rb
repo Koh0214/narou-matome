@@ -1,0 +1,2 @@
+class Matome < ApplicationRecord
+end

@@ -1,0 +1,25 @@
+%h1 Listing matomes
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Discription
+      %th Like
+      %th
+      %th
+      %th
+
+  %tbody
+    - @matomes.each do |matome|
+      %tr
+        %td= matome.title
+        %td= matome.discription
+        %td= matome.like
+        %td= link_to 'Show', matome
+        %td= link_to 'Edit', edit_matome_path(matome)
+        %td= link_to 'Destroy', matome, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Matome', new_matome_path

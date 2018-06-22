@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @matome.title
+%p
+  %b Discription:
+  = @matome.discription
+%p
+  %b Like:
+  = @matome.like
+
+= link_to 'Edit', edit_matome_path(@matome)
+\|
+= link_to 'Back', matomes_path
