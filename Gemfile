@@ -53,6 +53,10 @@ group :development, :test do
 
   # better_errorsの画面上にirb/pry(PERL)を表示する
   gem 'binding_of_caller'
+
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
 end
 
 group :development do

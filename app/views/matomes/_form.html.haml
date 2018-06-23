@@ -1,0 +1,19 @@
+= form_for @matome do |f|
+  - if @matome.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@matome.errors.count, "error")} prohibited this matome from being saved:"
+      %ul
+        - @matome.errors.full_messages.each do |message|
+          %li= message
+  =f.hidden_field :user_id, :value => current_user.id
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :discription
+    = f.text_area :discription
+  .field
+    = f.label :like
+    = f.number_field :like
+  .actions
+    = f.submit 'Save'

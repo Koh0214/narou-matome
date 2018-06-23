@@ -1,0 +1,24 @@
+%h1 Listing matomes
+
+.container.m-0.p-0
+  - @matomes.each do |matome|
+    = link_to(matome_path(matome), target: "_blank") do
+      .card.mx-auto.p-2.py-3
+        .card-title.mb-0
+          .font-weight-bold{:style => "font-size:18px; color:#283593;"}
+            = matome.title
+            = matome.user.name
+        -# %hr.m-1
+        .card-body.py-0
+          -# = matome.discription
+          .row
+            .small.text-muted.p-1.pt-2{:style => "font-size:11px"}
+              %span{"class"=>"comment-count"}
+              .fa.fa-comments-o
+              -# %span{"class"=>"comment-count"}（#{matome.comments.count}）】
+              = matome.created_at.strftime("%Y/%m/%d/ %H:%M")
+              -# 【#{matome.impressionist_count} PV】
+
+%br
+
+= link_to 'New Matome', new_matome_path
