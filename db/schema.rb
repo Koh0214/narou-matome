@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_133128) do
+ActiveRecord::Schema.define(version: 2018_06_23_164943) do
 
   create_table "matomes", force: :cascade do |t|
     t.string "title"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 2018_06_22_133128) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_matomes_on_user_id"
+  end
+
+  create_table "novels", force: :cascade do |t|
+    t.string "title"
+    t.text "discription"
+    t.text "review"
+    t.text "url"
+    t.text "amazon_url"
+    t.integer "matome_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["matome_id"], name: "index_novels_on_matome_id"
   end
 
   create_table "users", force: :cascade do |t|
