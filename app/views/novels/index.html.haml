@@ -1,0 +1,31 @@
+%h1 Listing novels
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Discription
+      %th Review
+      %th Url
+      %th Amazon url
+      %th Matome
+      %th
+      %th
+      %th
+
+  %tbody
+    - @novels.each do |novel|
+      %tr
+        %td= novel.title
+        %td= novel.discription
+        %td= novel.review
+        %td= novel.url
+        %td= novel.amazon_url
+        %td= novel.matome
+        %td= link_to 'Show', novel
+        %td= link_to 'Edit', edit_novel_path(novel)
+        %td= link_to 'Destroy', novel, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Novel', new_novel_path
