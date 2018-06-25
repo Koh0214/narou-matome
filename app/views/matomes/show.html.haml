@@ -17,21 +17,9 @@
 \|
 = link_to 'Back', root_path
 
-- @novels.each_with_index do |novel, id|
-  .row
-    .card.mx-2.w-100.shadow
-      .card-title
-        = simple_format(novel.title,:style => "font-size:20px; line-height:160%;")
-        = simple_format(novel.discription,:style => "font-size:17px; line-height:160%;")
-        = simple_format(novel.review,:style => "font-size:20px; line-height:160%;")
-      .card-body.pl-2.pt-3.pb-2{:style => "min-height:100px;"}
-        .row.pl-3.pb-2.small.text-muted
-          %span{"class"=>"novel-index-number"} #{id+1}
-          ：
-          = novel.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
-        .font-weight-bold.pb-4
-          = simple_format(novel.discription,:style => "font-size:17px; line-height:160%;")
-        -# = render :partial => "novel-like", :locals => { topic: @topic,  novel: novel, like: @like }
+#novel-cards
+  - @novels.each do |novel|
+    = render partial: "novel-card", locals: { novel: novel }
 
 -# 【novelのカラム】
 -# id: nil,
@@ -52,7 +40,7 @@
       = f.text_area :discription, :placeholder=>'詳細説明', class: "mt-2 d-block under-comment-text", required: "required"
       = f.text_area :review, :placeholder=>'レビュー', class: "mt-2 d-block under-comment-text", required: "required"
       .m-3
-        = f.submit "小説を追加する", class: "btn btn-primary px-5 mx-auto d-block"
+        = f.submit "小説を追加する", class: "btn btn-primary px-5 mx-auto d-block", data: { disable_with: "小説を追加する"}
 
 .row.m-3
   / 切り替えボタンの設定
@@ -77,4 +65,4 @@
                 = f.text_area :discription, :placeholder=>'詳細説明', class: "mt-2 d-block under-comment-text", required: "required"
                 = f.text_area :review, :placeholder=>'レビュー', class: "mt-2 d-block under-comment-text", required: "required"
                 .m-3
-                  = f.submit "小説を追加する", class: "btn btn-primary px-5 mx-auto d-block"
+                  = f.submit "小説を追加する", class: "btn btn-primary px-5 mx-auto d-block", data: { disable_with: "小説を追加する"}
