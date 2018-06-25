@@ -2,7 +2,7 @@
 
 .container.m-0.p-0
   - @matomes.each do |matome|
-    = link_to(matome_path(matome), target: "_blank") do
+    = link_to(matome_path(matome)) do
       .card.mx-auto.p-2.py-3
         .card-title.mb-0
           .font-weight-bold{:style => "font-size:18px; color:#283593;"}
