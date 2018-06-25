@@ -17,8 +17,8 @@
 \|
 = link_to 'Back', root_path
 
-- @novels.each_with_index do |novel, id|
-  = render :partial => "novel-card", :locals => { novel: novel,  id: id }
+- @novels.each do |novel|
+  = render partial: "novel-card", locals: { novel: novel }
 
 -# 【novelのカラム】
 -# id: nil,

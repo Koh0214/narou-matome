@@ -6,8 +6,6 @@
       = simple_format(novel.review,:style => "font-size:20px; line-height:160%;")
     .card-body.pl-2.pt-3.pb-2{:style => "min-height:100px;"}
       .row.pl-3.pb-2.small.text-muted
-        %span{"class"=>"novel-index-number"} #{id+1}
-        ：
         = novel.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
       .font-weight-bold.pb-4
         = simple_format(novel.discription,:style => "font-size:17px; line-height:160%;")
