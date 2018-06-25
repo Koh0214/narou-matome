@@ -12,6 +12,7 @@ class MatomesController < ApplicationController
   def show
     @matome = Matome.where(:id => params[:id]).first
     @novels = @matome.novels.all
+    @novel = Novel.new
   end
 
   # GET /matomes/new
