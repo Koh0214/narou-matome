@@ -15,7 +15,25 @@
 
 = link_to 'Edit', edit_matome_path(@matome)
 \|
-= link_to 'Back', matomes_path
+= link_to 'Back', root_path
+
+- @novels.each_with_index do |novel, id|
+  .row
+    .card.mx-2.w-100.shadow
+      .card-title
+        = simple_format(novel.title,:style => "font-size:20px; line-height:160%;")
+        = simple_format(novel.discription,:style => "font-size:17px; line-height:160%;")
+        = simple_format(novel.review,:style => "font-size:20px; line-height:160%;")
+      .card-body.pl-2.pt-3.pb-2{:style => "min-height:100px;"}
+        .row.pl-3.pb-2.small.text-muted
+          %span{"class"=>"novel-index-number"} #{id+1}
+          ：
+          = novel.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
+        .font-weight-bold.pb-4
+          = simple_format(novel.discription,:style => "font-size:17px; line-height:160%;")
+        -# = render :partial => "novel-like", :locals => { topic: @topic,  novel: novel, like: @like }
+        -# 返信ボタン
+        .fa.fa-reply.float-right.reply-button.btn{"data-target" => "#myReplyModal", "data-toggle" => "modal"}
 
 -# コメント下のフォーム
 -# 【novelのカラム】
