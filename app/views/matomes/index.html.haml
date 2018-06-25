@@ -1,18 +1,18 @@
-%h1 Listing matomes
+%h2.text-center なろうまとめ
 
 .container.m-0.p-0
   - @matomes.each do |matome|
     = link_to(matome_path(matome)) do
-      .card.mx-auto.p-2.py-3
+      .card.mx-auto.p-2{:style => "background-color: #F5F5F5;"}
         .card-title.mb-0
-          .font-weight-bold{:style => "font-size:18px; color:#283593;"}
+          .font-weight-bold{:style => "font-size:18px; color: black;"}
             = matome.title
-            = matome.user.name
+            -# = matome.user.name
         -# %hr.m-1
-        .card-body.py-0
-          -# = matome.discription
+        .card-body.p-0{style: "color: #666;" }
+          = matome.discription
           .row
-            .small.text-muted.p-1.pt-2{:style => "font-size:11px"}
+            .small.text-muted.p-1.pt-2.pl-5{:style => "font-size:11px"}
               %span{"class"=>"comment-count"}
               .fa.fa-comments-o
               -# %span{"class"=>"comment-count"}（#{matome.comments.count}）】
