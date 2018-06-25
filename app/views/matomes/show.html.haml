@@ -56,8 +56,9 @@
 
 .row.m-3
   / 切り替えボタンの設定
-  %button.btn.comment-button{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
-    = fa_icon 'plus 2x'
+  %button.btn.btn-add-novel{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+    = fa_icon 'pencil'
+    小説を追加する
   / モーダルの設定
   #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
     .modal-dialog.modal-dialog-centered{:role => "document"}
