@@ -11,6 +11,7 @@ class MatomesController < ApplicationController
   # GET /matomes/1.json
   def show
     @matome = Matome.where(:id => params[:id]).first
+    impressionist(@matome, nil, unique: [:session_hash])
     @novels = @matome.novels.all
     @novel = Novel.new
   end
