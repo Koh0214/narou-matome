@@ -10,6 +10,8 @@ class MatomesController < ApplicationController
   # GET /matomes/1
   # GET /matomes/1.json
   def show
+    @matome = Matome.where(:id => params[:id]).first
+    @novels = @matome.novels.all
   end
 
   # GET /matomes/new
