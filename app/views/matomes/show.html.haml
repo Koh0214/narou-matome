@@ -32,10 +32,7 @@
         .font-weight-bold.pb-4
           = simple_format(novel.discription,:style => "font-size:17px; line-height:160%;")
         -# = render :partial => "novel-like", :locals => { topic: @topic,  novel: novel, like: @like }
-        -# 返信ボタン
-        .fa.fa-reply.float-right.reply-button.btn{"data-target" => "#myReplyModal", "data-toggle" => "modal"}
 
--# コメント下のフォーム
 -# 【novelのカラム】
 -# id: nil,
 -# title: nil,
@@ -48,11 +45,36 @@
 -# updated_at: nil
 .row
   .mx-auto.mt-4
-    = form_for @novel do |f|
+    = form_for @novel , :remote => true do |f|
       = f.label :名前
       =f.hidden_field :matome_id, :value => @matome.id
       = f.text_field :title, placeholder:"小説名", required: "required"
       = f.text_area :discription, :placeholder=>'詳細説明', class: "mt-2 d-block under-comment-text", required: "required"
       = f.text_area :review, :placeholder=>'レビュー', class: "mt-2 d-block under-comment-text", required: "required"
       .m-3
-        = f.submit "コメントする", class: "btn btn-primary px-5 mx-auto d-block"
+        = f.submit "小説を追加する", class: "btn btn-primary px-5 mx-auto d-block"
+
+.row.m-3
+  / 切り替えボタンの設定
+  %button.btn.btn-add-novel{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+    = fa_icon 'pencil'
+    小説を追加する
+  / モーダルの設定
+  #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog.modal-dialog-centered{:role => "document"}
+      .modal-content
+        .modal-header
+          -# #exampleModalLabel.modal-title #{@topic.content}
+          %button.close{"aria-label" => "閉じる", "data-dismiss" => "modal", :type => "button"}
+            .pt-3{"aria-hidden" => "true"} ×
+        .modal-body
+          .row
+            .mx-auto.mt-4
+              = form_for @novel , :remote => true do |f|
+                = f.label :名前
+                =f.hidden_field :matome_id, :value => @matome.id
+                = f.text_field :title, placeholder:"小説名", required: "required"
+                = f.text_area :discription, :placeholder=>'詳細説明', class: "mt-2 d-block under-comment-text", required: "required"
+                = f.text_area :review, :placeholder=>'レビュー', class: "mt-2 d-block under-comment-text", required: "required"
+                .m-3
+                  = f.submit "小説を追加する", class: "btn btn-primary px-5 mx-auto d-block"

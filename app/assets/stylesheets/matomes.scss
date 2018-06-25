@@ -1,3 +1,21 @@
 // Place all the styles related to the Matomes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//show page
+
+.btn-add-novel{
+  border-radius: 5% !important;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  font-weight: bold;
+  background-color: #E5F4F7;
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.19);
+
+  position:fixed;
+  bottom:15px;
+  right:15px;
+  z-index:999;
+}
