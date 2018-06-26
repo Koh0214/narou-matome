@@ -11,13 +11,12 @@
         -# %hr.m-1
         .card-body.p-0{style: "color: #666;" }
           = matome.discription
-          .row
-            .small.text-muted.p-1.pt-2.pl-5{:style => "font-size:11px"}
-              %span{"class"=>"comment-count"}
-              .fa.fa-comments-o
-              -# %span{"class"=>"comment-count"}（#{matome.comments.count}）】
-              = matome.created_at.strftime("%Y/%m/%d/ %H:%M")
-              【#{matome.impressionist_count} PV】
+          .container
+            .row
+              .small.text-muted.p-1.pt-2.pl-5{:style => "font-size:11px"}
+                %span{"class"=>"comment-count"}
+                = matome.created_at.strftime("%Y/%m/%d/ %H:%M")
+                【#{matome.impressionist_count} PV】
 
 %br
 
