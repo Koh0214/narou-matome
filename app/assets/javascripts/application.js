@@ -18,7 +18,10 @@
 //= require turbolinks
 //= require_tree .
 
-$(function() {
+
+//もっと見る機能
+//https://www.tam-tam.co.jp/tipsnote/javascript/post4191.html
+$(document).on('turbolinks:load',function(){
     var count = 100;
  $('.text_overflow').each(function() {
      var thisText = $(this).text();
