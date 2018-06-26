@@ -11,6 +11,18 @@
     .card-body
       -# .fa.fa-user-o.fa-2x.mr-1
       = @matome.discription
+-# %p
+-#   %b Title:
+-#   = @matome.title
+-# %p
+-#   %b Discription:
+-#   = @matome.discription
+-# %p
+-#   %b Like:
+-#   = @matome.like
+-# %p
+-#   %b User:
+-#   = @matome.user
 
 #novel-cards
   - @novels.each do |novel|
@@ -52,6 +64,7 @@
     .modal-dialog.modal-dialog-centered{:role => "document"}
       .modal-content
         .modal-header
+          -# #exampleModalLabel.modal-title #{@topic.content}
           %button.close{"aria-label" => "閉じる", "data-dismiss" => "modal", :type => "button"}
             .pt-3{"aria-hidden" => "true"} ×
         .modal-body
