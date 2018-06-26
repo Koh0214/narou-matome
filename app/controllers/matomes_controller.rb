@@ -4,13 +4,14 @@ class MatomesController < ApplicationController
   # GET /matomes
   # GET /matomes.json
   def index
-    @matomes = Matome.all
+    @matomes = Matome.order("id desc")
   end
 
   # GET /matomes/1
   # GET /matomes/1.json
   def show
     @matome = Matome.where(:id => params[:id]).first
+    impressionist(@matome, nil, unique: [:session_hash])
     @novels = @matome.novels.all
     @novel = Novel.new
   end
@@ -32,7 +33,7 @@ class MatomesController < ApplicationController
 
     respond_to do |format|
       if @matome.save
-        format.html { redirect_to @matome, notice: 'Matome was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Matome was successfully created.' }
         format.json { render :show, status: :created, location: @matome }
       else
         format.html { render :new }

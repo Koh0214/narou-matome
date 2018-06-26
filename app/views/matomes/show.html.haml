@@ -13,10 +13,6 @@
   %b User:
   = @matome.user
 
-= link_to 'Edit', edit_matome_path(@matome)
-\|
-= link_to 'Back', root_path
-
 #novel-cards
   - @novels.each do |novel|
     = render partial: "novel-card", locals: { novel: novel }
@@ -42,9 +38,13 @@
       .m-3
         = f.submit "小説を追加する", class: "btn btn-primary px-5 mx-auto d-block", data: { disable_with: "小説を追加する"}
 
+= link_to 'Edit', edit_matome_path(@matome)
+\|
+= link_to 'Back', root_path
+
 .row.m-3
   / 切り替えボタンの設定
-  %button.btn.btn-add-novel{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+  %button.btn.btn-primary.btn-add-novel{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
     = fa_icon 'pencil'
     小説を追加する
   / モーダルの設定
