@@ -1,11 +1,14 @@
-.row
-  .card.mx-2.w-100.shadow
-    .card-title
-      = simple_format(novel.title,:style => "font-size:20px; line-height:160%;")
-      = simple_format(novel.discription,:style => "font-size:17px; line-height:160%;")
-      = simple_format(novel.review,:style => "font-size:20px; line-height:160%;")
-    .card-body.pl-2.pt-3.pb-2{:style => "min-height:100px;"}
-      .row.pl-3.pb-2.small.text-muted
-        = novel.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
-      .font-weight-bold.pb-4
-        = simple_format(novel.discription,:style => "font-size:17px; line-height:160%;")
+%hr
+.fa.fa-commenting-o.fa-2x.ml-2
+おすすめポイント
+= simple_format(novel.review,style: "font-size:18px; line-height:160%;", class: "font-weight-bold px-3 pt-1 pb-3")
+.card{:style => "background-color: #f9f9f9;"}
+  .card-title.p-2.mb-0{:style => "margin-bottom: 0px; font-size:17px; line-height:160%; color: blue !important;"}
+    //TODO urlを持って入ればリンク、持っていなかったらリンクにしないように分ける
+    = link_to novel.url, target: "_blank" do
+      .novel-title-link
+        #{novel.title}
+        .fa.fa-external-link
+  .card-body.pl-2.pt-0.pb-2{:style => "min-height:100px;"}
+    .text_overflow
+      = simple_format(novel.discription,:style => "font-size:14px; line-height:160%;")
