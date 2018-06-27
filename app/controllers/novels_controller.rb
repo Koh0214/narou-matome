@@ -70,6 +70,6 @@ class NovelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def novel_params
-      params.require(:novel).permit(:title, :discription, :review, :url, :amazon_url, :matome_id)
+      params.require(:novel).permit(:title, :description, :review, :url, :amazon_url, :matome_id)
     end
 end
