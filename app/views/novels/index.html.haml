@@ -4,7 +4,7 @@
   %thead
     %tr
       %th Title
-      %th Discription
+      %th Description
       %th Review
       %th Url
       %th Amazon url
@@ -17,7 +17,7 @@
     - @novels.each do |novel|
       %tr
         %td= novel.title
-        %td= novel.discription
+        %td= novel.description
         %td= novel.review
         %td= novel.url
         %td= novel.amazon_url

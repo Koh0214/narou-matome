@@ -74,6 +74,6 @@ class MatomesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def matome_params
-      params.require(:matome).permit(:title, :discription, :like, :user_id)
+      params.require(:matome).permit(:title, :description, :like, :user_id)
     end
 end
