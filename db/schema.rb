@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_25_140047) do
+ActiveRecord::Schema.define(version: 2018_06_27_025658) do
 
   create_table "impressions", force: :cascade do |t|
     t.string "impressionable_type"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_140047) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["user_id"], name: "index_matomes_on_user_id"
   end
 
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_140047) do
     t.integer "matome_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["matome_id"], name: "index_novels_on_matome_id"
   end
 
