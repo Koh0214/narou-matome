@@ -44,3 +44,30 @@ $(document).on('turbolinks:load',function(){
       return false;
    });
 });
+
+
+$(document).on('turbolinks:load',function(){
+
+  $("#get-novel-info-button").click(function(){
+      $.ajax({
+          url: "scraping_novel",
+          type: "GET",
+          data: { url : $("#modal-novel-url").val()
+                  },
+          dataType: "html",
+          success: function(data) {
+              console.log('success');
+              console.log(data);
+              // app/views/matomes/scraping_novel.js.erb
+              //上記ファイルの中身を文字列"delimiter"で分ける
+              var split_datas = data.split("delimiter");
+              $("#modal-novel-title").val(split_datas[0]);
+              $("#modal-novel-description").val(split_datas[1]);
+          },
+          error: function(data) {
+              console.log('error');
+              alert("URLが不正、もしくはこのURLには対応していません。");
+          }
+      });
+  });
+});
