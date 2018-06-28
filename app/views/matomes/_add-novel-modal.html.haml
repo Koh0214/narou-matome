@@ -1,5 +1,5 @@
 #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog.modal-dialog-centered{:role => "document"}
+  .modal-dialog.modal-dialog-centered.mx-auto{:role => "document"}
     .modal-content
       -# .modal-header
       -#   %button.close{"aria-label" => "閉じる", "data-dismiss" => "modal", :type => "button"}
@@ -10,12 +10,13 @@
         .row
           .mx-auto.mt-4
             = form_for novel , :remote => true do |f|
-              = f.text_field :url, placeholder:"小説URL", required: "required", id: "modal-novel-url"
+              = f.text_field :url, placeholder:"小説URL：対応URLは自動読み込みします", required: "required", id: "modal-novel-url"
               .button.btn.btn-primary#get-novel-info-button
-                小説情報取得
-              %br
+                URL読み込み
+              .small.text-muted.mb-4
+                ※URL入力後右の「URL読み込み」ボタンを押してください
               = f.text_field :title, placeholder:"小説名", id: "modal-novel-title", required: "required"
-              = f.text_area :description, :placeholder=>'詳細説明', id: "modal-novel-description", class: "mt-2 d-block under-comment-text", required: "required"
+              = f.text_area :description, :placeholder=>'あらすじ', id: "modal-novel-description", class: "mt-2 d-block under-comment-text", required: "required"
               = f.text_area :review, :placeholder=>'おすすめポイントを書いてください！', id: "modal-novel-review", class: "mt-2 d-block under-comment-text", required: "required"
               = f.hidden_field :matome_id, :value => matome.id
               .m-3
