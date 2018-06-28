@@ -14,11 +14,6 @@ class MatomesController < ApplicationController
     impressionist(@matome, nil, unique: [:session_hash])
     @novels = @matome.novels.all
     @novel = Novel.new
-
-    agent = Mechanize.new
-    page = agent.get("https://ncode.syosetu.com/n4449cj/")
-    @novel_title = page.at('.novel_title').inner_text
-    @novel_description = page.at('#novel_ex').inner_text
   end
 
   # GET /matomes/new
@@ -70,6 +65,19 @@ class MatomesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  def scraping_novel
+    agent = Mechanize.new
+    page = agent.get(params[:url])
+    @novel_title = page.at('.novel_title').inner_text
+    @novel_description = page.at('#novel_ex').inner_text
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
