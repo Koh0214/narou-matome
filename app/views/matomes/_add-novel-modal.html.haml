@@ -10,7 +10,7 @@
         .row
           .mx-auto.mt-4
             = form_for novel , :remote => true do |f|
-              = f.text_field :url, placeholder:"小説URL：対応URLは自動読み込みします", required: "required", id: "modal-novel-url"
+              = f.text_field :url, placeholder:"小説URL", required: "required", id: "modal-novel-url"
               .button.btn.btn-primary#get-novel-info-button
                 URL読み込み
               .small.text-muted.mb-4
