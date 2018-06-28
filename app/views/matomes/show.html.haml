@@ -1,3 +1,7 @@
+-# .button.btn.btn-primary#novel-info
+-#   button
+-# %input#novel-url
+
 .container.m-0.p-0
   %h2.text-center なろうまとめ
   %p#notice= notice
@@ -16,27 +20,6 @@
   - @novels.each do |novel|
     = render partial: "novel-card", locals: { novel: novel }
 
--# 【novelのカラム】
--# id: nil,
--# title: nil,
--# description: nil,
--# review: nil,
--# url: nil,
--# amazon_url: nil,
--# matome_id: nil,
--# created_at: nil,
--# updated_at: nil
-.container
-  .row
-    .mx-auto.mt-4
-      = form_for @novel , :remote => true do |f|
-        = f.hidden_field :matome_id, :value => @matome.id
-        = f.text_field :title, placeholder:"小説名", required: "required"
-        = f.text_area :description, :placeholder=>'詳細説明', class: "mt-2 d-block under-comment-text", required: "required"
-        = f.text_area :review, :placeholder=>'レビュー', class: "mt-2 d-block under-comment-text", required: "required"
-        = f.text_area :url, :placeholder=>'小説URL', class: "mt-2 d-block under-comment-text", required: "required"
-        .mx-auto
-          = f.submit "小説を追加する", class: "btn btn-primary px-5 mx-auto d-block", data: { disable_with: "小説を追加する"}
 
 = link_to 'Edit', edit_matome_path(@matome)
 \|
@@ -47,21 +30,4 @@
   %button.btn.btn-primary.btn-add-novel{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
     = fa_icon 'pencil'
     小説を追加する
-  / モーダルの設定
-  #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-    .modal-dialog.modal-dialog-centered{:role => "document"}
-      .modal-content
-        .modal-header
-          %button.close{"aria-label" => "閉じる", "data-dismiss" => "modal", :type => "button"}
-            .pt-3{"aria-hidden" => "true"} ×
-        .modal-body
-          .row
-            .mx-auto.mt-4
-              = form_for @novel , :remote => true do |f|
-                = f.label :名前
-                =f.hidden_field :matome_id, :value => @matome.id
-                = f.text_field :title, placeholder:"小説名", required: "required"
-                = f.text_area :description, :placeholder=>'詳細説明', class: "mt-2 d-block under-comment-text", required: "required"
-                = f.text_area :review, :placeholder=>'レビュー', class: "mt-2 d-block under-comment-text", required: "required"
-                .m-3
-                  = f.submit "小説を追加する", class: "btn btn-primary px-5 mx-auto d-block", data: { disable_with: "小説を追加する"}
+  = render partial: "add-novel-modal", locals: { novel: @novel, matome: @matome }

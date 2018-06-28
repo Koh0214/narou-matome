@@ -66,6 +66,19 @@ class MatomesController < ApplicationController
     end
   end
 
+
+  def scraping_novel
+    agent = Mechanize.new
+    page = agent.get(params[:url])
+    @novel_title = page.at('.novel_title').inner_text
+    @novel_description = page.at('#novel_ex').inner_text
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_matome
