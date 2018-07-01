@@ -11,4 +11,34 @@
     = include_gon
     -# = javascript_include_tag "application"
   %body
+    %h2.text-center なろうまとめ
+    -# http://cccabinet.jpn.org/bootstrap4/components/navbar
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      %a.navbar-brand{:href => "#"} ブランド
+      %button.navbar-toggler{"aria-controls" => "Navber", "aria-expanded" => "false", "aria-label" => "ナビゲーションの切替", "data-target" => "#Navber", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      #Navber.collapse.navbar-collapse
+        %ul.navbar-nav.mr-auto
+          %li.nav-item.active
+            %a.nav-link{:href => "#"}
+              ホーム
+              %span.sr-only (現位置)
+          %li.nav-item
+            %a.nav-link{:href => "#"} リンク
+          %li.nav-item.dropdown
+            %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              ドロップダウン
+            .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+              %a.dropdown-item{:href => "#"} メニュー1
+              %a.dropdown-item{:href => "#"} メニュー2
+              .dropdown-divider
+              %a.dropdown-item{:href => "#"} その他
+          %li.nav-item
+            %a.nav-link.disabled{:href => "#"} 無効
+        -# %form.form-inline.my-2.my-lg-0
+        -#   %input.form-control.mr-sm-2{"aria-label" => "検索...", :placeholder => "検索...", :type => "search"}/
+        -#   %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} 検索
+        -#   .navbar-collapse
+
+
     = yield
