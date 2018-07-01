@@ -1,5 +1,6 @@
 class MatomesController < ApplicationController
   before_action :set_matome, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :destroy]
 
   # GET /matomes
   # GET /matomes.json
