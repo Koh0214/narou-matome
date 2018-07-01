@@ -1,5 +1,11 @@
 %h2.text-center なろうまとめ
 
+-# フラッシュメッセージ
+- flash.each do |key, value|
+  %div{:class => "alert alert-#{key}"}
+    .container
+      = value
+
 .container.m-0.p-0
   - @matomes.each do |matome|
     = link_to(matome_path(matome)) do
@@ -20,4 +26,15 @@
 
 %br
 
-= link_to 'New Matome', new_matome_path
+- if user_signed_in?
+  = link_to new_matome_path do
+    .btn.btn-primary
+      新規まとめ作成
+  .m-2
+  = link_to destroy_user_session_path, method: :delete do
+    .logout-button.btn.btn-primary
+      ログアウト
+- else
+  = link_to new_user_session_path do
+    .btn.btn-primary
+      ログイン
