@@ -4,7 +4,14 @@
 
 .container.m-0.p-0
   %h2.text-center なろうまとめ
+  -# フラッシュメッセージ
+  - flash.each do |key, value|
+    %div{:class => "alert alert-#{key}"}
+      .container
+        = value
+
   %p#notice= notice
+  %p#alert= alert
   .card{:style => "background-color: #EEEEEE;"}
     .card-title.m-0
       お気に入り10件
