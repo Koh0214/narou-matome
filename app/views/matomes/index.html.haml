@@ -4,7 +4,7 @@
     .container
       = value
 
-.container.m-0.p-0
+.container-fluid.m-0.p-0
   - @matomes.each do |matome|
     = link_to(matome_path(matome)) do
       .card.mx-auto.p-2{:style => "background-color: #F5F5F5;"}
@@ -21,18 +21,3 @@
                 %span{"class"=>"comment-count"}
                 = matome.created_at.strftime("%Y/%m/%d/ %H:%M")
                 【#{matome.impressionist_count} PV】
-
-%br
-
-- if user_signed_in?
-  = link_to new_matome_path do
-    .btn.btn-primary
-      新規まとめ作成
-  .m-2
-  = link_to destroy_user_session_path, method: :delete do
-    .logout-button.btn.btn-primary
-      ログアウト
-- else
-  = link_to new_user_session_path do
-    .btn.btn-primary
-      ログイン
