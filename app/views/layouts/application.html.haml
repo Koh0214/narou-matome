@@ -11,33 +11,34 @@
     = include_gon
     -# = javascript_include_tag "application"
   %body
+    -# .container.m-0.p-0
+    -# 何かをヘッダーに追加したくなったら以下のページを見る。
     -# http://cccabinet.jpn.org/bootstrap4/components/navbar
-    %nav.navbar.navbar-expand-lg.navbar-light.bg-white
-      = link_to "なろうまとめ", root_path, class: "navbar-brand mx-auto"
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-white.fixed-top
+      = link_to "なろうまとめ", root_path, class: "navbar-brand-center mx-auto d-block"
       %button.navbar-toggler{"aria-controls" => "Navber", "aria-expanded" => "false", "aria-label" => "ナビゲーションの切替", "data-target" => "#Navber", "data-toggle" => "collapse", :type => "button"}
         %span.navbar-toggler-icon
       #Navber.collapse.navbar-collapse
+        -# %ul.navbar-nav.mr-auto
+        -#   %li.nav-item
+        -#     %a.fa.fa-home.fa-2x.ml-3{:href => root_path}
         %ul.navbar-nav.ml-auto
           %li.nav-item
-            %a.nav-link{:href => root_path} ホーム
-          %li.nav-item
-            %a.nav-link{:href => "#"} リンク
-          %li.nav-item.dropdown
-            %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              ドロップダウン
-            .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-              %a.dropdown-item{:href => "#"} メニュー1
-              %a.dropdown-item{:href => "#"} メニュー2
-              .dropdown-divider
-              %a.dropdown-item{:href => "#"} その他
-          %li.nav-item
-            %a.nav-link.disabled{:href => "#"} 無効
-        -# %form.form-inline.my-2.my-lg-0
-        -#   %input.form-control.mr-sm-2{"aria-label" => "検索...", :placeholder => "検索...", :type => "search"}/
-        -#   %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} 検索
-        -#   .navbar-collapse
-
-    -# %h2.text-center なろうまとめ
+            - if user_signed_in?
+              .fa.fa-user-o
+              = current_user.name
+              さん
+              = link_to new_matome_path do
+                .btn.btn-outline-primary
+                  新規まとめ作成
+              = link_to destroy_user_session_path, method: :delete do
+                .logout-button.btn.btn-outline-danger
+                  ログアウト
+            - else
+              = link_to new_user_session_path do
+                .btn.btn-primary
+                  ログイン
+    %div{style: "height: 54px;"}
 
 
     = yield
