@@ -2,15 +2,13 @@
 -#   button
 -# %input#novel-url
 
-.container.m-0.p-0
+.container-fluid.m-0.p-0
   -# フラッシュメッセージ
   - flash.each do |key, value|
     %div{:class => "alert alert-#{key}"}
       .container
         = value
 
-  %p#notice= notice
-  %p#alert= alert
   .card{:style => "background-color: #EEEEEE;"}
     .card-title.m-0
       お気に入り10件
@@ -32,7 +30,7 @@
 = link_to 'Back', root_path
 
 
-- if @matome.user_id == current_user.id
+- if user_signed_in? && @matome.user_id == current_user.id
   .row.m-3
     / 切り替えボタンの設定
     %button.btn.btn-primary.btn-add-novel{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
