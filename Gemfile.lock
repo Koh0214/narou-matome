@@ -313,6 +313,7 @@ DEPENDENCIES
   font-awesome-rails
   gon
   haml-rails
+  i18n
   impressionist
   jbuilder (~> 2.5)
   jquery-rails

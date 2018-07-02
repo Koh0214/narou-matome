@@ -1,33 +1,31 @@
--# .button.btn.btn-primary#novel-info
--#   button
--# %input#novel-url
+= render partial: "flash-message"
 
-.container.m-0.p-0
-  %h2.text-center なろうまとめ
-  %p#notice= notice
+.container-fluid.m-0.p-0
   .card{:style => "background-color: #EEEEEE;"}
     .card-title.m-0
       お気に入り10件
     .card-body.p-2
       .font-weight-bold{:style => "font-size: 22px;"}
         = @matome.title
-  .card.mb-1{:style => "background-color: #F5F5F5;"}
+  .card.mb-1{:style => "background-color: #EEEEEE;"}
     .card-body
       -# .fa.fa-user-o.fa-2x.mr-1
       = @matome.description
 
-#novel-cards
-  - @novels.each do |novel|
-    = render partial: "novel-card", locals: { novel: novel }
+  #novel-cards
+    - @novels.each do |novel|
+      = render partial: "novel-card", locals: { novel: novel }
 
 
-= link_to 'Edit', edit_matome_path(@matome)
-\|
-= link_to 'Back', root_path
+  = link_to 'Edit', edit_matome_path(@matome)
+  \|
+  = link_to 'Back', root_path
 
-.row.m-3
-  / 切り替えボタンの設定
-  %button.btn.btn-primary.btn-add-novel{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
-    = fa_icon 'pencil'
-    小説を追加する
-  = render partial: "add-novel-modal", locals: { novel: @novel, matome: @matome }
+
+  - if user_signed_in? && @matome.user_id == current_user.id
+    .row.m-3
+      / 切り替えボタンの設定
+      %button.btn.btn-primary.btn-add-novel{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+        = fa_icon 'pencil'
+        小説を追加する
+      = render partial: "add-novel-modal", locals: { novel: @novel, matome: @matome }

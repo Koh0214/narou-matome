@@ -1,6 +1,6 @@
-%h2.text-center なろうまとめ
+= render partial: "flash-message"
 
-.container.m-0.p-0
+.container-fluid.m-0.p-0
   - @matomes.each do |matome|
     = link_to(matome_path(matome)) do
       .card.mx-auto.p-2{:style => "background-color: #F5F5F5;"}
@@ -17,7 +17,3 @@
                 %span{"class"=>"comment-count"}
                 = matome.created_at.strftime("%Y/%m/%d/ %H:%M")
                 【#{matome.impressionist_count} PV】
-
-%br
-
-= link_to 'New Matome', new_matome_path
