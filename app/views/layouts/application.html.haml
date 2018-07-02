@@ -14,7 +14,7 @@
     -# .container.m-0.p-0
     -# 何かをヘッダーに追加したくなったら以下のページを見る。
     -# http://cccabinet.jpn.org/bootstrap4/components/navbar
-    %nav.navbar.navbar-expand-lg.navbar-light.bg-white.fixed-top
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-white
       = link_to "なろうまとめ", root_path, class: "navbar-brand-center mx-auto d-block"
       %button.navbar-toggler{"aria-controls" => "Navber", "aria-expanded" => "false", "aria-label" => "ナビゲーションの切替", "data-target" => "#Navber", "data-toggle" => "collapse", :type => "button"}
         %span.navbar-toggler-icon
@@ -38,7 +38,8 @@
               = link_to new_user_session_path do
                 .btn.btn-primary
                   ログイン
-    %div{style: "height: 54px;"}
+    -# ヘッダーを.fixed_topする場合、以下が必要
+    -# %div{style: "height: 54px;"}
 
 
     = yield
