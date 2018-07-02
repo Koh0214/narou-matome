@@ -1,14 +1,11 @@
 = render partial: "flash-message"
 
 .container-fluid.m-0.p-0
-  .card{:style => "background-color: #EEEEEE;"}
-    .card-title.m-0
-      お気に入り10件
-    .card-body.p-2
-      .font-weight-bold{:style => "font-size: 22px;"}
+  .card{:style => "background-color: white;"}
+    .card-title.p-2.mb-0
+      .pl-2.font-weight-bold{:style => "font-size: 22px;"}
         = @matome.title
-  .card.mb-1{:style => "background-color: #EEEEEE;"}
-    .card-body
+    .card-body.p-2
       -# .fa.fa-user-o.fa-2x.mr-1
       = @matome.description
 
