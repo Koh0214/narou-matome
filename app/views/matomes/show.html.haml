@@ -1,13 +1,4 @@
--# .button.btn.btn-primary#novel-info
--#   button
--# %input#novel-url
-
-.container-fluid.m-0.p-0
-  -# フラッシュメッセージ
-  - flash.each do |key, value|
-    %div{:class => "alert alert-#{key}"}
-      .container
-        = value
+= render partial: "flash-message"
 
   .card{:style => "background-color: #EEEEEE;"}
     .card-title.m-0
