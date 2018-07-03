@@ -32,7 +32,7 @@ $(document).on('turbolinks:load',function(){
            var insertText = showText;
           insertText += '<span class="hide">' + hideText + '</span>';
            insertText += '<span class="omit">…</span>';
-            insertText += '<a href="" class="more">もっと見る</a>';
+            insertText += '<a href="" class="more" style="color: #b2b2b2">もっと見る</a>';
             $(this).html(insertText);
        };
   });
@@ -48,7 +48,8 @@ $(document).on('turbolinks:load',function(){
 
 $(document).on('turbolinks:load',function(){
 
-  $("#get-novel-info-button").click(function(){
+  // $("#get-novel-info-button").click(function(){
+  $("#modal-novel-url").change(function(){
       $.ajax({
           url: "scraping_novel",
           type: "GET",

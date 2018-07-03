@@ -15,28 +15,32 @@
     -# 何かをヘッダーに追加したくなったら以下のページを見る。
     -# http://cccabinet.jpn.org/bootstrap4/components/navbar
     %nav.navbar.navbar-expand-lg.navbar-light.bg-white
-      = link_to "なろうまとめ", root_path, class: "navbar-brand-center mx-auto d-block"
+      %nav.navbar.navbar-light.p-0
+        %a.navbar-brand{:href => root_path}
+          %img{:alt => "なろうまとめ", :height => "40", :src => "/images/logo.png"}/
+
       %button.navbar-toggler{"aria-controls" => "Navber", "aria-expanded" => "false", "aria-label" => "ナビゲーションの切替", "data-target" => "#Navber", "data-toggle" => "collapse", :type => "button"}
         %span.navbar-toggler-icon
       #Navber.collapse.navbar-collapse
-        -# %ul.navbar-nav.mr-auto
-        -#   %li.nav-item
-        -#     %a.fa.fa-home.fa-2x.ml-3{:href => root_path}
         %ul.navbar-nav.ml-auto
           %li.nav-item
             - if user_signed_in?
-              .fa.fa-user-o
-              = current_user.name
-              さん
+              = link_to edit_user_registration_path do
+                .fa.fa-user-o
+                = current_user.name
+                さん
               = link_to new_matome_path do
-                .btn.btn-outline-primary
+                .btn.btn-primary
                   新規まとめ作成
               = link_to destroy_user_session_path, method: :delete do
                 .logout-button.btn.btn-outline-danger
                   ログアウト
             - else
-              = link_to new_user_session_path do
+              = link_to new_user_registration_path do
                 .btn.btn-primary
+                  新規ユーザー登録
+              = link_to new_user_session_path do
+                .btn.btn-outline-primary
                   ログイン
     -# ヘッダーを.fixed_topする場合、以下が必要
     -# %div{style: "height: 54px;"}
