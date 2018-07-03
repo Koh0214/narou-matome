@@ -52,7 +52,7 @@ $(document).on('turbolinks:load',function(){
   $("#modal-novel-url").change(function(){
       $.ajax({
           url: "scraping_novel",
-          type: "GET",
+          type: "POST",
           data: { url : $("#modal-novel-url").val()
                   },
           dataType: "html",

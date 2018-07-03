@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "matomes/scraping_novel"
+  post "matomes/scraping_novel"
   resources :novels
   resources :matomes
   devise_for :users
