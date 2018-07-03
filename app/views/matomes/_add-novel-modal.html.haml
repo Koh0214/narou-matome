@@ -1,5 +1,5 @@
 #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog.modal-dialog-centered.mx-auto{:role => "document"}
+  .modal-dialog.modal-lg{:role => "document"}
     .modal-content
       -# .modal-header
       -#   %button.close{"aria-label" => "閉じる", "data-dismiss" => "modal", :type => "button"}
@@ -11,8 +11,8 @@
           .mx-auto.mt-4
             = form_for novel , :remote => true do |f|
               .form-group
-                = f.label :"小説アドレス（小説名・あらすじを自動入力します）"
-                = f.text_field :url, placeholder:"小説URL", required: "required", id: "modal-novel-url", class: "form-control"
+                = f.label :"小説アドレス（小説名・あらすじをアドレスから自動入力します）"
+                = f.text_field :url, placeholder:"小説アドレス", required: "required", id: "modal-novel-url", class: "form-control"
               %hr
               -# .button.btn.btn-primary#get-novel-info-button
               -#   URL読み込み
