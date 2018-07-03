@@ -70,6 +70,7 @@ class MatomesController < ApplicationController
 
   def scraping_novel
     require 'mechanize'
+    require 'nokogiri'
 
     agent = Mechanize.new
     page = agent.get(params[:url])
