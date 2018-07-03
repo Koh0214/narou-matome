@@ -1,5 +1,5 @@
 %hr
-.card.novel-card.mx-2{:style => "background-color: #f9f9f9;"}
+.card.novel-card.mx-2{:style => "background-color: #efefef;"}
   .card-title.p-2.mb-0{:style => "margin-bottom: 0px; font-size:18px; line-height:160%; color: blue !important;"}
     //TODO urlを持って入ればリンク、持っていなかったらリンクにしないように分ける
     = link_to novel.url, target: "_blank" do
@@ -13,3 +13,7 @@
     .text_overflow
       【あらすじ】
       = simple_format(novel.description,:style => "font-size:14px; line-height:160%;")
+    = link_to novel.url, target: "_blank" do
+      .novel-title-link.mt-1
+        新しいタブで開く
+        .fa.fa-external-link

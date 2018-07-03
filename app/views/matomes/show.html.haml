@@ -1,11 +1,11 @@
 = render partial: "flash-message"
 
 .container-fluid.m-0.p-0
-  .card{:style => "background-color: white;"}
+  .card{:style => "background-color: #efefef;"}
     .card-title.p-2.mb-0
       .pl-2.font-weight-bold{:style => "font-size: 22px;"}
         = @matome.title
-    .card-body.p-2
+    .card-body.px-3.py-2.text-muted
       -# .fa.fa-user-o.fa-2x.mr-1
       = @matome.description
 
