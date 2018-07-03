@@ -48,7 +48,8 @@ $(document).on('turbolinks:load',function(){
 
 $(document).on('turbolinks:load',function(){
 
-  $("#get-novel-info-button").click(function(){
+  // $("#get-novel-info-button").click(function(){
+  $("#modal-novel-url").change(function(){
       $.ajax({
           url: "scraping_novel",
           type: "GET",
