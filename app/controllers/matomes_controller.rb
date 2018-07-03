@@ -70,6 +70,7 @@ class MatomesController < ApplicationController
 
   def scraping_novel
     agent = Mechanize.new
+    agent.request_headers
     page = agent.get(params[:url])
     @novel_title = page.at('.novel_title').inner_text
     @novel_description = page.at('#novel_ex').inner_text
