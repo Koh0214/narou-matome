@@ -1,19 +1,29 @@
-= form_for @matome do |f|
-  - if @matome.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@matome.errors.count, "error")} prohibited this matome from being saved:"
-      %ul
-        - @matome.errors.full_messages.each do |message|
-          %li= message
-  =f.hidden_field :user_id, :value => current_user.id
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :like
-    = f.number_field :like
-  .actions
-    = f.submit 'Save'
+.container-fluid
+  .card.card-default.devise-bs.mt-2.mb-3.mx-5.bg-light{style: "border-radius: 10px !important;"}
+    .card-title.mx-4.mt-4
+      -# t(のところ、よくわかっていない。
+      -# まとめの新規作成、編集で同じものを使い回し
+      -if controller.action_name == "new"
+        %h4= t('.matomes_new', default: '新規まとめの作成')
+      -else
+        %h4= t('.matomes_edit', default: 'まとめの編集')
+    .card-body
+      = form_for @matome do |f|
+        - if @matome.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@matome.errors.count, "error")} prohibited this matome from being saved:"
+            %ul
+              - @matome.errors.full_messages.each do |message|
+                %li= message
+        = f.hidden_field :user_id, :value => current_user.id
+        .form-group
+          = f.label :タイトル
+          = f.text_field :title, placeholder: "タイトル", class: 'form-control'
+        .form-group
+          = f.label :説明
+          = f.text_area :description, placeholder: "まとめの説明を書いてください！", class: 'form-control', style: "height: 150px;"
+        -# .form-group
+        -#   = f.label :like
+        -#   = f.number_field :like, class: 'form-control'
+        .actions
+          = f.submit '保存する', class: "btn btn-primary"
