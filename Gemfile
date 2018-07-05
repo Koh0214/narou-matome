@@ -46,6 +46,7 @@ gem 'font-awesome-rails'
 
 gem 'impressionist'
 
+gem 'nokogiri'
 gem 'mechanize'
 
 gem 'gon'
