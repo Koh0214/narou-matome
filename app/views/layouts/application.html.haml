@@ -25,7 +25,7 @@
         %ul.navbar-nav.ml-auto
           %li.nav-item
             - if user_signed_in?
-              = link_to edit_user_registration_path do
+              = link_to user_path(current_user) do
                 .fa.fa-pencil
                 = current_user.name
                 さん
