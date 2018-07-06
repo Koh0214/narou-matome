@@ -10,6 +10,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = include_gon
     -# = javascript_include_tag "application"
+    = analytics_init if Rails.env.production?
   %body
     = render partial: "layouts/header"
 
