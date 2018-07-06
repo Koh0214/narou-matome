@@ -70,15 +70,37 @@ class MatomesController < ApplicationController
 
 
   def scraping_novel
-    agent = Mechanize.new
-    agent.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    page = agent.get(params[:url])
-    @novel_title = page.at('.novel_title').inner_text
-    @novel_description = page.at('#novel_ex').inner_text
+    # agent = Mechanize.new
+    # agent.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    # page = agent.get(params[:url])
+    # @novel_title = page.at('.novel_title').inner_text
+    # @novel_description = page.at('#novel_ex').inner_text
+    #
+    # respond_to do |format|
+    #   format.js
+    # end
 
-    respond_to do |format|
-      format.js
+    require 'open-uri'
+    require 'nokogiri'
+
+    # スクレイピング先のURL
+    url = params[:url]
+    charset = nil
+
+    html = open(url) do |f|
+        charset = f.charset
+        f.read
     end
+
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+
+    p doc.css("p.novel_title").inner_text
+    p doc.css("div#novel_ex").inner_text
+
+    # タイトルを表示
+    @novel_title = doc.css("p.novel_title").inner_text
+    @novel_description = doc.css("div#novel_ex").inner_text
+
   end
 
 
