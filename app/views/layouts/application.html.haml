@@ -25,12 +25,12 @@
         %ul.navbar-nav.ml-auto
           %li.nav-item
             - if user_signed_in?
-              = link_to edit_user_registration_path do
+              = link_to user_path(current_user) do
                 .fa.fa-user-o
                 = current_user.name
                 さん
               = link_to new_matome_path do
-                .btn.btn-primary
+                .btn.btn-primary.ml-3
                   新規まとめ作成
               = link_to destroy_user_session_path, method: :delete do
                 .logout-button.btn.btn-outline-danger

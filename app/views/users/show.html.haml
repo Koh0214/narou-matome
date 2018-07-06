@@ -1,5 +1,14 @@
-= render partial: "flash-message"
+.card.mx-3.my-2
+  .card-title.h2.p-3.mb-0
+    = @user.name
+    さんのまとめ
+  -if user_signed_in? && current_user.id == @user.id
+    .card-body.px-3.pb-2.pt-0
+      = link_to edit_user_registration_path(@user) do
+        .fa.fa-pencil
+          ユーザ情報編集
 
+-# matomes#index と同じだからpartialに切り出しできるかも？
 .container-fluid.m-0.p-0
   - @matomes.each do |matome|
     = link_to(matome_path(matome)) do

@@ -9,6 +9,14 @@
       -# .fa.fa-user-o.fa-2x.mr-1
       = @matome.description
 
+  = link_to user_path(@matome.user) do
+    .card.mx-3.my-2
+      .card-body.px-3.py-0
+        この記事は私がまとめました
+        .fa.fa-user-o.pl-2
+          = @matome.user.name
+        .fa.fa-arrow-right.text-muted
+
   #novel-cards
     - @novels.each do |novel|
       = render partial: "novel-card", locals: { novel: novel }
