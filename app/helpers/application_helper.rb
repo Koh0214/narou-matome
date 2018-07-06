@@ -26,7 +26,7 @@ module ApplicationHelper
       reverse: true,
       charset: 'utf-8',
       description: description,
-      keywords: '小説家になろう, なろう, なろう小説, おすすめ, オススメ, まとめ, なま, キュレーション, 共有',
+      keywords: '小説家になろう, なろう, なろう小説, おすすめ, オススメ, まとめ, なろま, なま, キュレーション, 共有',
       canonical: request.original_url,
       separator: ':',
       icon: [
