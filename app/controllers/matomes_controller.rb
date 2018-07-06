@@ -1,6 +1,7 @@
 class MatomesController < ApplicationController
   before_action :set_matome, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :create, :destroy]
+  require 'mechanize'
 
   # GET /matomes
   # GET /matomes.json
@@ -69,9 +70,6 @@ class MatomesController < ApplicationController
 
 
   def scraping_novel
-    require 'mechanize'
-    require 'nokogiri'
-
     agent = Mechanize.new
     page = agent.get(params[:url])
     @novel_title = page.at('.novel_title').inner_text
