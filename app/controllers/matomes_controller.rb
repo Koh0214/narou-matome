@@ -1,7 +1,6 @@
 class MatomesController < ApplicationController
   before_action :set_matome, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :create, :destroy]
-  require 'mechanize'
 
   # GET /matomes
   # GET /matomes.json
@@ -69,37 +68,32 @@ class MatomesController < ApplicationController
   end
 
 
-  def scraping_novel
+  def get_novel_info
+
+    # 参考URL https://qiita.com/awakia/items/bd8c1385115df27c15fa
+    # TODO APIが死んだ時とかに、単純に500が返ってきて、javascriptエラーになるけどそれで良いのかな？
+    novel_code = params[:url].gsub("https://ncode.syosetu.com/", "").gsub("/", "")
+    request_url = "https://api.syosetu.com/novelapi/api/?out=json&of=t-s-w&ncode=" + novel_code
+
+    api_response = Net::HTTP.get(URI.parse(request_url))
+    novel_info = JSON.parse(api_response)
+
+    @novel_title = novel_info[1]["title"]
+    @novel_description = novel_info[1]["story"]
+
+
+    # TODO ハーメルンとかをMechanizeでスクレイピングする場合を入れる
+    # 暫定的にハーメルンから取得してみたけど、クラスssがたくさんありすぎて大量に取得する状態になっている。
+    # harmeln_url = "https://syosetu.org/novel/145355/"
     # agent = Mechanize.new
     # agent.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    # page = agent.get(params[:url])
-    # @novel_title = page.at('.novel_title').inner_text
-    # @novel_description = page.at('#novel_ex').inner_text
+    # page = agent.get(harmeln_url)
+    # @novel_title = page.at('title').inner_text
+    # @novel_description = page.search('.ss.ss').inner_text
     #
     # respond_to do |format|
     #   format.js
     # end
-
-    require 'open-uri'
-    require 'nokogiri'
-
-    # スクレイピング先のURL
-    url = params[:url]
-    charset = nil
-
-    html = open(url) do |f|
-        charset = f.charset
-        f.read
-    end
-
-    doc = Nokogiri::HTML.parse(html, nil, charset)
-
-    p doc.css("p.novel_title").inner_text
-    p doc.css("div#novel_ex").inner_text
-
-    # タイトルを表示
-    @novel_title = doc.css("p.novel_title").inner_text
-    @novel_description = doc.css("div#novel_ex").inner_text
 
   end
 
