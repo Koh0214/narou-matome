@@ -6,23 +6,26 @@
         - @novel.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :review
-    = f.text_area :review
-  .field
-    = f.label :url
-    = f.text_area :url
-  .field
-    = f.label :amazon_url
-    = f.text_area :amazon_url
-  .field
-    = f.label :matome
-    = f.text_field :matome
-  .actions
-    = f.submit 'Save'
+  .container-fluid
+    .card.card-default.devise-bs.m-5.bg-light{style: "border-radius: 10px !important;"}
+      .card-title.mx-4.mt-4
+      .card-body
+        .form-group.field
+          = f.label :小説タイトル
+          = f.text_field :title, autofocus: true, class: 'form-control'
+        .form-group.field
+          = f.label :あらすじ
+          = f.text_area :description, autofocus: true, class: 'form-control', style: "height: 200px;"
+        .form-group.field
+          = f.label :レビュー
+          = f.text_area :review, class: 'form-control', style: "height: 200px;"
+        .form-group.field
+          = f.label :url
+          = f.text_area :url, class: 'form-control', style: "height: 40px;"
+        .form-group.field
+          = f.label :amazon_url
+          = f.text_area :amazon_url, class: 'form-control', style: "height: 40px;"
+        .actions
+          = f.submit '保存'
+
+  = render 'devise/shared/links'
