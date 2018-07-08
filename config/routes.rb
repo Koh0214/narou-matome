@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'users/index'
   get 'users/show'
-  get "matomes/scraping_novel"
+  get "matomes/get_novel_info"
   resources :novels
   resources :matomes
   devise_for :users

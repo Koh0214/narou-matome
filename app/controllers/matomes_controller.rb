@@ -68,7 +68,7 @@ class MatomesController < ApplicationController
   end
 
 
-  def scraping_novel
+  def get_novel_info
 
     # 参考URL https://qiita.com/awakia/items/bd8c1385115df27c15fa
     # TODO APIが死んだ時とかに、単純に500が返ってきて、javascriptエラーになるけどそれで良いのかな？

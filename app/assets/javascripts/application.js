@@ -51,7 +51,7 @@ $(document).on('turbolinks:load',function(){
   // $("#get-novel-info-button").click(function(){
   $("#modal-novel-url").change(function(){
       $.ajax({
-          url: "scraping_novel",
+          url: "get_novel_info",
           type: "GET",
           data: { url : $("#modal-novel-url").val()
                   },
