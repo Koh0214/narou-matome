@@ -83,11 +83,13 @@ class MatomesController < ApplicationController
 
 
     # TODO ハーメルンとかをMechanizeでスクレイピングする場合を入れる
+    # 暫定的にハーメルンから取得してみたけど、クラスssがたくさんありすぎて大量に取得する状態になっている。
+    # harmeln_url = "https://syosetu.org/novel/145355/"
     # agent = Mechanize.new
     # agent.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    # page = agent.get(params[:url])
-    # @novel_title = page.at('.novel_title').inner_text
-    # @novel_description = page.at('#novel_ex').inner_text
+    # page = agent.get(harmeln_url)
+    # @novel_title = page.at('title').inner_text
+    # @novel_description = page.search('.ss.ss').inner_text
     #
     # respond_to do |format|
     #   format.js
