@@ -70,25 +70,17 @@ class MatomesController < ApplicationController
 
   def scraping_novel
 
-    url = "https://api.syosetu.com/novelapi/api/?out=json&of=t-s-w&ncode=n4449cj"
+    novel_code = params[:url].gsub("https://ncode.syosetu.com/", "").gsub("/", "")
+    request_url = "https://api.syosetu.com/novelapi/api/?out=json&of=t-s-w&ncode=" + novel_code
 
-    p URI.parse(url)
+    api_response = Net::HTTP.get(URI.parse(request_url))
+    novel_info = JSON.parse(api_response)
 
-    response = Net::HTTP.get(URI.parse(url))
-    p response
-
-    result = JSON.parse(response)
-    # p result
-    p result[1]
-    p result[1]["title"]
-    p result[1]["story"]
-
-    @novel_title = result[1]["title"]
-    @novel_description = result[1]["story"]
+    @novel_title = novel_info[1]["title"]
+    @novel_description = novel_info[1]["story"]
 
 
-    # TODO ハーメルンとかをMechanizeでスクレイピングする場合。
-    
+    # TODO ハーメルンとかをMechanizeでスクレイピングする場合を入れる
     # agent = Mechanize.new
     # agent.verify_mode = OpenSSL::SSL::VERIFY_NONE
     # page = agent.get(params[:url])
