@@ -1,7 +1,6 @@
 class MatomesController < ApplicationController
   before_action :set_matome, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :create, :destroy]
-  require 'mechanize'
 
   # GET /matomes
   # GET /matomes.json
@@ -70,6 +69,26 @@ class MatomesController < ApplicationController
 
 
   def scraping_novel
+
+    url = "https://api.syosetu.com/novelapi/api/?out=json&of=t-s-w&ncode=n4449cj"
+
+    p URI.parse(url)
+
+    response = Net::HTTP.get(URI.parse(url))
+    p response
+
+    result = JSON.parse(response)
+    # p result
+    p result[1]
+    p result[1]["title"]
+    p result[1]["story"]
+
+    @novel_title = result[1]["title"]
+    @novel_description = result[1]["story"]
+
+
+    # TODO ハーメルンとかをMechanizeでスクレイピングする場合。
+    
     # agent = Mechanize.new
     # agent.verify_mode = OpenSSL::SSL::VERIFY_NONE
     # page = agent.get(params[:url])
@@ -79,27 +98,6 @@ class MatomesController < ApplicationController
     # respond_to do |format|
     #   format.js
     # end
-
-    require 'open-uri'
-    require 'nokogiri'
-
-    # スクレイピング先のURL
-    url = params[:url]
-    charset = nil
-
-    html = open(url) do |f|
-        charset = f.charset
-        f.read
-    end
-
-    doc = Nokogiri::HTML.parse(html, nil, charset)
-
-    p doc.css("p.novel_title").inner_text
-    p doc.css("div#novel_ex").inner_text
-
-    # タイトルを表示
-    @novel_title = doc.css("p.novel_title").inner_text
-    @novel_description = doc.css("div#novel_ex").inner_text
 
   end
 
