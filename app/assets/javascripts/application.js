@@ -22,7 +22,7 @@
 //もっと見る機能
 //https://www.tam-tam.co.jp/tipsnote/javascript/post4191.html
 $(document).on('turbolinks:load',function(){
-    var count = 100;
+    var count = 0;
  $('.text_overflow').each(function() {
      var thisText = $(this).text();
       var textLength = thisText.length;
@@ -32,7 +32,7 @@ $(document).on('turbolinks:load',function(){
            var insertText = showText;
           insertText += '<span class="hide">' + hideText + '</span>';
            insertText += '<span class="omit">…</span>';
-            insertText += '<a href="" class="more" style="color: #b2b2b2">もっと見る</a>';
+            insertText += '<a href="" class="more" style="color: #8c8c8c">あらすじを見る</a>';
             $(this).html(insertText);
        };
   });
