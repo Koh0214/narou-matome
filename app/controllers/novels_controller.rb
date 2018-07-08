@@ -43,7 +43,7 @@ class NovelsController < ApplicationController
   def update
     respond_to do |format|
       if @novel.update(novel_params)
-        format.html { redirect_to @novel, notice: 'Novel was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Novel was successfully updated.' }
         format.json { render :show, status: :ok, location: @novel }
       else
         format.html { render :edit }
