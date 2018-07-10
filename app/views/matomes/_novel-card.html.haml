@@ -8,7 +8,12 @@
         .fa.fa-external-link
   .m-1{style: "background-color:white; border: solid 1px #cccccc;"}
     -# .fa.fa-book.fa-2x.ml-2.mt-2
-    = simple_format(novel.review,style: "font-size:15px; line-height:160%;", class: "font-weight-bold p-2 mb-0")
+    .row
+      .fa.fa-hand-o-right.fa-2x.ml-4.mt-1
+      .font-weight-bold.p-2
+        現代知識＋王子転生＋国作り
+    %hr.m-0
+    = simple_format(novel.review,style: "font-size:15px; line-height:160%;", class: "p-2 mb-0")
   .card-body.pl-2.pt-0.pb-2
     .text_overflow
       【あらすじ】
