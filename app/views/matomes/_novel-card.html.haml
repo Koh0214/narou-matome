@@ -9,7 +9,7 @@
   .m-1{style: "background-color:white; border: solid 1px #cccccc;"}
     -# .fa.fa-book.fa-2x.ml-2.mt-2
     = simple_format(novel.review,style: "font-size:15px; line-height:160%;", class: "font-weight-bold p-2 mb-0")
-  .card-body.pl-2.pt-0.pb-2{:style => "min-height:100px;"}
+  .card-body.pl-2.pt-0.pb-2
     .text_overflow
       【あらすじ】
       = simple_format(novel.description,:style => "font-size:14px; line-height:160%;")
