@@ -32,7 +32,7 @@ $(document).on('turbolinks:load',function(){
            var insertText = showText;
           insertText += '<span class="hide">' + hideText + '</span>';
            insertText += '<span class="omit">…</span>';
-            insertText += '<a href="" class="more" style="color: #8c8c8c">あらすじを見る</a>';
+            insertText += '<a href="" class="more" style="color: #8c8c8c">あらすじを開く</a>';
             $(this).html(insertText);
        };
   });
