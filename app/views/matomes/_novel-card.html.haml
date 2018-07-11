@@ -10,9 +10,14 @@
     -# .fa.fa-book.fa-2x.ml-2.mt-2
     = simple_format(novel.review,style: "font-size:15px; line-height:160%;", class: "font-weight-bold p-2 mb-0")
   .card-body.pl-2.pt-0.pb-2
-    .text_overflow
+    %a{class: "text-muted open-description"}
+      &= "... あらすじを開く"
+    .description{style: "display:none; font-size: 13px;"}
       【あらすじ】
-      = simple_format(novel.description,:style => "font-size:14px; line-height:160%;")
+      = simple_format(novel.description,:style => "line-height:170%;")
+      %a{class: "text-muted close-description", style: "display:none;"}
+        あらすじを閉じる
+      %hr
     = link_to novel.url, target: "_blank" do
       .novel-title-link.mt-1
         新しいタブで開く

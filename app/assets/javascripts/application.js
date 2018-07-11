@@ -19,30 +19,18 @@
 //= require_tree .
 
 
-//もっと見る機能
-//https://www.tam-tam.co.jp/tipsnote/javascript/post4191.html
 $(document).on('turbolinks:load',function(){
-    var count = 0;
- $('.text_overflow').each(function() {
-     var thisText = $(this).text();
-      var textLength = thisText.length;
-       if (textLength > count) {
-            var showText = thisText.substring(0, count);
-            var hideText = thisText.substring(count, textLength);
-           var insertText = showText;
-          insertText += '<span class="hide">' + hideText + '</span>';
-           insertText += '<span class="omit">…</span>';
-            insertText += '<a href="" class="more" style="color: #8c8c8c">あらすじを開く</a>';
-            $(this).html(insertText);
-       };
-  });
- $('.text_overflow .hide').hide();
- $('.text_overflow .more').click(function() {
-      $(this).hide()
-          .prev('.omit').hide()
-         .prev('.hide').fadeIn();
-      return false;
-   });
+ $('.open-description').click(function() {
+    $(this).hide();
+    $(this).next().show(300);
+    $(this).next().children(".close-description").show(1500)
+    return false;
+ });
+ $(".close-description").click(function() {
+    $(this).hide()
+    $(this).parent().prev().show(500);
+    $(this).parent().hide(300);
+ })
 });
 
 
