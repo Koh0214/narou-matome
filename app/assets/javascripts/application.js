@@ -32,7 +32,7 @@ $(document).on('turbolinks:load',function(){
            var insertText = showText;
           insertText += '<span class="hide">' + hideText + '</span>';
            insertText += '<span class="omit">…</span>';
-            insertText += '<a href="" class="more" style="color: #8c8c8c">あらすじを見る</a>';
+            insertText += '<a href="" class="more" style="color: #8c8c8c">あらすじを開く</a>';
             $(this).html(insertText);
        };
   });
@@ -50,25 +50,27 @@ $(document).on('turbolinks:load',function(){
 
   // $("#get-novel-info-button").click(function(){
   $("#modal-novel-url").change(function(){
-      $.ajax({
-          url: "get_novel_info",
-          type: "GET",
-          data: { url : $("#modal-novel-url").val()
-                  },
-          dataType: "html",
-          success: function(data) {
-              console.log('success');
-              console.log(data);
-              // app/views/matomes/scraping_novel.js.erb
-              //上記ファイルの中身を文字列"delimiter"で分ける
-              var split_datas = data.split("delimiter");
-              $("#modal-novel-title").val(split_datas[0]);
-              $("#modal-novel-description").val(split_datas[1]);
-          },
-          error: function(data) {
-              console.log('error');
-              alert("URLが不正、もしくはこのURLには対応していません。");
-          }
-      });
+      if ($("#modal-novel-url").val() != "" ) {
+        $.ajax({
+            url: "get_novel_info",
+            type: "GET",
+            data: { url : $("#modal-novel-url").val()
+                    },
+            dataType: "html",
+            success: function(data) {
+                console.log('success');
+                console.log(data);
+                // app/views/matomes/scraping_novel.js.erb
+                //上記ファイルの中身を文字列"delimiter"で分ける
+                var split_datas = data.split("delimiter");
+                $("#modal-novel-title").val(split_datas[0]);
+                $("#modal-novel-description").val(split_datas[1]);
+            },
+            error: function(data) {
+                console.log('error');
+                alert("URLが不正、もしくはこのURLには対応していません。");
+            }
+        });
+      }
   });
 });

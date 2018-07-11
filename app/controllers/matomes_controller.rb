@@ -78,8 +78,15 @@ class MatomesController < ApplicationController
     api_response = Net::HTTP.get(URI.parse(request_url))
     novel_info = JSON.parse(api_response)
 
-    @novel_title = novel_info[1]["title"]
-    @novel_description = novel_info[1]["story"]
+    # 入力されたURLが対応したURLだった場合、allcount(取得小説数)が1となる
+    # そうじゃない場合はnullを入れて、javascriptの方でエラーを出す。TODO ここでのnullはundefinedになっているが、結果的に望む動作をしている。
+    if novel_info[0]["allcount"] == 1
+      @novel_title = novel_info[1]["title"]
+      @novel_description = novel_info[1]["story"]
+    else
+      @novel_title = null
+      @novel_description = null
+    end
 
 
     # TODO ハーメルンとかをMechanizeでスクレイピングする場合を入れる
