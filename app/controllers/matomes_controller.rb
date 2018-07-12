@@ -13,7 +13,7 @@ class MatomesController < ApplicationController
   def show
     @matome = Matome.where(:id => params[:id]).first
     impressionist(@matome, nil, unique: [:session_hash])
-    @novels = @matome.novels.all
+    @novels = @matome.novels.order("id")
     @novel = Novel.new
   end
 
