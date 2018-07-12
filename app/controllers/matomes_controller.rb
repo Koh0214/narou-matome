@@ -34,7 +34,7 @@ class MatomesController < ApplicationController
 
     respond_to do |format|
       if @matome.save
-        format.html { redirect_to root_path, notice: 'Matome was successfully created.' }
+        format.html { redirect_to @matome, notice: 'Matome was successfully created.' }
         format.json { render :show, status: :created, location: @matome }
       else
         format.html { render :new }
