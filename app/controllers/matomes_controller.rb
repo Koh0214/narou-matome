@@ -72,7 +72,7 @@ class MatomesController < ApplicationController
 
     # 参考URL https://qiita.com/awakia/items/bd8c1385115df27c15fa
     # TODO APIが死んだ時とかに、単純に500が返ってきて、javascriptエラーになるけどそれで良いのかな？
-    novel_code = params[:url].gsub("https://ncode.syosetu.com/", "").gsub("/", "")
+    novel_code = params[:url].gsub("https://ncode.syosetu.com/", "").gsub("http://ncode.syosetu.com/", "").gsub("/", "")
     request_url = "https://api.syosetu.com/novelapi/api/?out=json&of=t-s-w&ncode=" + novel_code
 
     api_response = Net::HTTP.get(URI.parse(request_url))
